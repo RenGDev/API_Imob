@@ -2,7 +2,6 @@ package com.lorenzo.api_imoveis.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class Users {
     private Long id;
 
     @ManyToMany
-    @JoinTable(name="pessoa_has_notebooks", joinColumns=
+    @JoinTable(name="pessoa_has_imoveis", joinColumns=
             {@JoinColumn(name="pessoa_id")}, inverseJoinColumns=
             {@JoinColumn(name="imoveis_id")})
     private List<Imoveis> imoveis;

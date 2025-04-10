@@ -4,7 +4,6 @@ import com.lorenzo.api_imoveis.entity.Users;
 import com.lorenzo.api_imoveis.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

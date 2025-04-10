@@ -1,4 +1,9 @@
 package com.lorenzo.api_imoveis.repository;
 
-public interface LeadsRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.lorenzo.api_imoveis.entity.Leads;
+
+public interface LeadsRepository extends JpaRepository<Leads, Long> {
+    
 }

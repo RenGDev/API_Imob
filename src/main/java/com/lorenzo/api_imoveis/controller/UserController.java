@@ -1,6 +1,5 @@
 package com.lorenzo.api_imoveis.controller;
 
-import com.lorenzo.api_imoveis.repository.UsersRepository;
 import com.lorenzo.api_imoveis.services.UsersServices;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.lorenzo.api_imoveis.entity.Users;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Controller

@@ -1,8 +1,6 @@
 package com.lorenzo.api_imoveis.controller;
 
-import com.lorenzo.api_imoveis.entity.Imoveis;
 import com.lorenzo.api_imoveis.entity.Photos;
-import com.lorenzo.api_imoveis.services.ImoveisService;
 import com.lorenzo.api_imoveis.services.PhotosService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,6 +5,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import com.lorenzo.api_imoveis.DTOs.UserWithImoveisDTO;
 import com.lorenzo.api_imoveis.entity.Users;
 
 import java.util.List;
@@ -18,8 +20,7 @@ public class UserController{
 
     @ResponseBody
     @RequestMapping("/list")
-    public List<Users> list(){
-
+    public List<UserWithImoveisDTO> list(){
         return services.getUsersFromLibrary();
     }
 

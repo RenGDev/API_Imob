@@ -6,7 +6,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -24,9 +26,13 @@ public class PhotosController {
 
     @ResponseBody
     @Transactional
-    @RequestMapping(path= "/register", method = RequestMethod.POST)
-    public Photos register(@RequestBody Photos photos){
-        return services.registerPhoto(photos);
+    @RequestMapping(path= "/upload/{imovelId}", method = RequestMethod.POST)
+    public Photos uploadPhoto(
+            @PathVariable Long imovelId,
+            @RequestParam("file") MultipartFile file,
+            @RequestParam(value = "description", required = false) String description
+    ) throws IOException {
+        return services.uploadPhoto(imovelId, file, description);
     }
 
     @ResponseBody

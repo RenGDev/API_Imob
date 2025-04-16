@@ -1,5 +1,7 @@
 package com.lorenzo.api_imoveis.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,6 +18,9 @@ public class Photos {
 
     private String url;
 
+    private String description;
+
     @ManyToOne
+    @JsonIgnoreProperties("photos")
     private Imoveis imovel;
 }

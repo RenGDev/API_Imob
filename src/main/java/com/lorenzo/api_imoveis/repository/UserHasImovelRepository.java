@@ -2,7 +2,6 @@ package com.lorenzo.api_imoveis.repository;
 
 import java.util.List;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.lorenzo.api_imoveis.entity.UserHasImovel;

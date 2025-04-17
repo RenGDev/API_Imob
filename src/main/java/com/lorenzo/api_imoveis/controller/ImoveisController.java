@@ -45,7 +45,7 @@ public class ImoveisController {
 
     @ResponseBody
     @Transactional
-    @RequestMapping(path= "/register", method = RequestMethod.POST)
+    @RequestMapping(path= "/register", method = RequestMethod.POST, consumes = {"application/json", "application/json;charset=UTF-8"})
     public Imoveis register(@RequestBody Imoveis imovel){
         return services.registerImovel(imovel);
     }

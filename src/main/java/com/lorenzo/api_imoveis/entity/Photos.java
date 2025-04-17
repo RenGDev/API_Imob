@@ -1,5 +1,6 @@
 package com.lorenzo.api_imoveis.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
@@ -22,5 +23,6 @@ public class Photos {
 
     @ManyToOne
     @JsonIgnoreProperties("photos")
+    @JsonBackReference
     private Imoveis imovel;
 }

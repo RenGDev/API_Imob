@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -42,11 +43,9 @@ public class Imoveis {
     private Number size;
 
     @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Photos> photos;
 
     @OneToMany(mappedBy = "imoveis", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    List<UserHasImovel> userhasimovel;
-    
-    @ManyToOne
-    private Corretores corretores;
+    private List<UserHasImovel> userhasimovel;
 }

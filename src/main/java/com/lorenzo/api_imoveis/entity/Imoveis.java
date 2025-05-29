@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Getter
-@Setter
+@Setter                                                                             
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,7 +36,6 @@ public class Imoveis {
     private String description;
     private String address;
     private String type;
-    private String photo;
     private Double price;
     private Number bedRooms;
     private Number bathRooms;

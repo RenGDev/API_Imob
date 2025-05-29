@@ -45,7 +45,6 @@ public class ImoveisService {
             imovel.getDescription(),
             imovel.getAddress(),
             imovel.getPrice(),
-            imovel.getPhoto(),
             imovel.getBathRooms(),
             imovel.getBedRooms(),
             imovel.getSize(),

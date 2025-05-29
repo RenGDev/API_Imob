@@ -43,6 +43,6 @@ public class UserHasImovel {
     @ManyToOne
     @MapsId("imovelId")
     @JoinColumn(name = "imovel_id")
-    @JsonManagedReference
+    // @JsonManagedReference
     Imoveis imoveis;
 }

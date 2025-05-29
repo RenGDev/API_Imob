@@ -6,14 +6,13 @@ import com.lorenzo.api_imoveis.services.ImoveisService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 
-@Controller
+@RestController
 @RequestMapping("imoveis")
 public class ImoveisController {
 
@@ -43,9 +42,8 @@ public class ImoveisController {
         return ResponseEntity.badRequest().build();
     }
 
-    @ResponseBody
     @Transactional
-    @RequestMapping(path= "/register", method = RequestMethod.POST, consumes = {"application/json", "application/json;charset=UTF-8"})
+    @PostMapping(path= "/register")
     public Imoveis register(@RequestBody Imoveis imovel){
         return services.registerImovel(imovel);
     }

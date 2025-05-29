@@ -12,9 +12,8 @@ public class ImovelDTO {
     private String description;
     private String address;
     private String type;
-    private String photo;
     private Double price;
-    private Number bedRooms;
-    private Number bathRooms;
-    private Number size;
+    private Integer bedRooms;
+    private Integer bathRooms;
+    private Integer size;
 }

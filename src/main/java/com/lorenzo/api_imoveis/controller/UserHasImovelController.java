@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.lorenzo.api_imoveis.DTOs.UserHasImovelDTO;
 import com.lorenzo.api_imoveis.entity.UserHasImovel;
@@ -16,7 +17,7 @@ import com.lorenzo.api_imoveis.services.UserHasImovelService;
 
 import jakarta.transaction.Transactional;
 
-@Controller
+@RestController
 @RequestMapping("user_imovel")
 public class UserHasImovelController {
 

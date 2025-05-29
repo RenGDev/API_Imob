@@ -14,7 +14,6 @@ public class ImovelWithUsuariosDTO {
     private String description;
     private String address;
     private Double price;
-    private String photo;
     private Number bedRooms;
     private Number bathRooms;
     private Number size;

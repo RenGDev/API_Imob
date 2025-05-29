@@ -43,8 +43,14 @@ public class Users {
 
 
     private String name;
+    @Column(unique = true)
     private String cpf;
     private String phone;
+    @Column(unique = true)
     private String email;
     private String password;
+    public Users orElseThrow(Object object) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
+    }
 }

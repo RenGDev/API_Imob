@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersServices {
@@ -37,7 +38,7 @@ public class UsersServices {
             List<ImovelDTO> imoveis = new ArrayList<>();
             for (UserHasImovel userHasImovel : userHasImovelList) {
                 Imoveis imovel = userHasImovel.getImoveis();
-                ImovelDTO imovelDTO = new ImovelDTO(imovel.getId(), imovel.getDescription(), imovel.getAddress(), imovel.getType(), null, imovel.getPrice(), null, null, null);
+                ImovelDTO imovelDTO = new ImovelDTO(imovel.getId(), imovel.getDescription(), imovel.getAddress(), imovel.getType(), imovel.getPrice(), null, null, null);
                 imoveis.add(imovelDTO);
             }
 
@@ -48,8 +49,21 @@ public class UsersServices {
         return result;
     }
 
-    public Users registerUser(Users user){
-         return repository.save(user);
+    public Optional<Users> getUser(Long id){
+        return repository.findById(id);
+    }
+
+    public Optional<Users> getUserByEmail(String email){
+        return repository.findByEmail(email);
+    }
+    
+    public boolean existsByEmail(String email) {
+        return repository.existsByEmail(email);
+    }
+    
+    public Users registerUser(Users user) {
+        // A senha já deve vir hasheada do controller
+        return repository.save(user);
     }
 
     public void deleteUsers(Long id){

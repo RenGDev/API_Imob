@@ -34,10 +34,10 @@ protected void doFilterInternal(HttpServletRequest request,
     
     // Se for uma rota pública, continue
     if (request.getRequestURI().startsWith("/auth/login") || 
-        request.getRequestURI().startsWith("/users/register") ||
-        request.getRequestURI().startsWith("/imoveis/list") ||
-        request.getRequestURI().startsWith("/users/list") ||
-        request.getRequestURI().startsWith("/users/list/*")){
+        request.getRequestURI().startsWith("/users") ||
+        request.getRequestURI().startsWith("/imoveis") ||
+        request.getRequestURI().startsWith("/photos") ||
+        request.getRequestURI().startsWith("/user_imovel/list")){
         filterChain.doFilter(request, response);
         return;
     }

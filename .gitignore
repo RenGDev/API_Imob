@@ -1,35 +1,32 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+# Sistema de build
+/target/
+/build/
 
+# Configurações do IDE
+/.idea/
+/*.iml
+*.classpath
+*.project
+*.settings/
+
+# Logs
+*.log
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de ambiente e variáveis sensíveis
+.env
 application.properties
-Dockerfile
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+application.yml
 
-### IntelliJ IDEA ###
-.idea
+# IntelliJ
 *.iws
-*.iml
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VSCode
 .vscode/
+
+# Testes
+/test-output/

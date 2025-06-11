@@ -19,6 +19,4 @@ public class RegisterRequestDTO {
     @NotBlank
     @Size(min = 6)
     private String password;
-
-
 }

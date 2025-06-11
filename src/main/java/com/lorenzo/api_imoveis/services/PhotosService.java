@@ -36,7 +36,7 @@ public class PhotosService {
         return repository.findAll();
     }
 
-    public Photos uploadPhoto(Long imovelId, MultipartFile file, String description) throws IOException {
+    public Photos uploadPhoto(Long imovelId, MultipartFile file, String description, Boolean isPrimary) throws IOException {
         // Upload pro Cloudinary
         Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
         String imageUrl = uploadResult.get("secure_url").toString();
@@ -50,6 +50,7 @@ public class PhotosService {
         photo.setUrl(imageUrl);
         photo.setDescription(description);
         photo.setImovel(imovel);
+        photo.setIsPrimary(isPrimary);
 
         return repository.save(photo);
     }

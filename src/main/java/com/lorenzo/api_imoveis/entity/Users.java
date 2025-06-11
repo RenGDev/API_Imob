@@ -3,7 +3,6 @@ package com.lorenzo.api_imoveis.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -38,7 +37,6 @@ public class Users {
     
 
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonIgnore
     List<UserHasImovel> userhasimovel;
 
 
@@ -49,6 +47,7 @@ public class Users {
     @Column(unique = true)
     private String email;
     private String password;
+    private String code;
     public Users orElseThrow(Object object) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");

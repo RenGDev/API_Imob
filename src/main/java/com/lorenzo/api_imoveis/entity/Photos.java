@@ -21,6 +21,8 @@ public class Photos {
 
     private String description;
 
+    private Boolean isPrimary;
+
     @ManyToOne
     @JsonIgnoreProperties("photos")
     @JsonBackReference

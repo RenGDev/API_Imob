@@ -6,6 +6,7 @@ import com.lorenzo.api_imoveis.entity.Imoveis;
 import com.lorenzo.api_imoveis.entity.Users;
 import com.lorenzo.api_imoveis.repository.ImoveisRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,10 @@ public class ImoveisService {
         return repository.findByTypeContainingIgnoreCase(type);
     }
 
+    public List<Imoveis> listImoveis(){
+        return repository.findAll();
+    }
+    
 
     public List<ImovelWithUsuariosDTO> getImoveisComUsuarios() {
     List<Imoveis> imoveis = repository.findAll();
@@ -54,8 +59,9 @@ public class ImoveisService {
 }
 
 
-    public Optional<Imoveis> getImovelById(Long id){
-        return repository.findById(id);
+    public ResponseEntity<Optional<Imoveis>> getImovelById(Long id){
+        Optional<Imoveis> imovel = repository.findById(id);
+        return ResponseEntity.ok(imovel);
     }
 
     public Imoveis registerImovel(Imoveis imovel){

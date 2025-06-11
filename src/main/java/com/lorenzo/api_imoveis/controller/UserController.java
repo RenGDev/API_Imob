@@ -1,8 +1,8 @@
 package com.lorenzo.api_imoveis.controller;
 
 import com.lorenzo.api_imoveis.DTOs.RegisterRequestDTO;
+import com.lorenzo.api_imoveis.DTOs.ResetPasswordRequestDTO;
 import com.lorenzo.api_imoveis.DTOs.UserWithImoveisDTO;
-import com.lorenzo.api_imoveis.entity.Imoveis;
 import com.lorenzo.api_imoveis.entity.Users;
 import com.lorenzo.api_imoveis.services.UsersServices;
 
@@ -35,15 +35,20 @@ public class UserController {
     }
 
     @ResponseBody
-    @RequestMapping("/list/{id}")
+    @RequestMapping("/list/id/{id}")
     public Optional<Users> getUser(@PathVariable Long id){
         return usersServices.getUser(id);
     }
 
     @ResponseBody
-    @RequestMapping("/list/{email}")
+    @RequestMapping("/list/email/{email}")
     public Optional<Users> getUserFromEmail(@PathVariable String email){
         return usersServices.getUserByEmail(email);
+    }
+
+    @PatchMapping("/recover")
+    public ResponseEntity<?> recoverPassword(@RequestParam String email) {
+        return usersServices.sendPasswordRecoveryCode(email);
     }
 
     @PostMapping("/register")
@@ -60,7 +65,7 @@ public class UserController {
             newUser.setEmail(registerRequest.getEmail());
             newUser.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
             
-            Users registeredUser = usersServices.registerUser(newUser);
+            ResponseEntity<?> registeredUser = usersServices.registerUser(newUser);
             return ResponseEntity.ok(registeredUser);
         } catch (Exception e) {
             return ResponseEntity.internalServerError()
@@ -76,5 +81,10 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         usersServices.deleteUsers(id);
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequestDTO request) {
+        return usersServices.resetPassword(request.getEmail(), request.getCodigo(), request.getNovaSenha());
     }
 }

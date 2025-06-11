@@ -1,7 +1,5 @@
 package com.lorenzo.api_imoveis.DTOs;
 
-import com.lorenzo.api_imoveis.entity.Users;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class LoginResponseDTO {
-    private Users user;
-    private String token;
+public class ResetPasswordRequestDTO {
+    private String email;
+    private String codigo;
+    private String novaSenha;
 }

@@ -36,10 +36,15 @@ public class Imoveis {
     private String description;
     private String address;
     private String type;
+    private String priceType;
     private Double price;
-    private Number bedRooms;
-    private Number bathRooms;
-    private Number size;
+    private Integer bedRooms;
+    private Integer bathRooms;
+    private Integer parkinSpace;
+    private Integer size;
+
+    @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL)
+    private List<Rating> ratings;
 
     @OneToMany(mappedBy = "imovel", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

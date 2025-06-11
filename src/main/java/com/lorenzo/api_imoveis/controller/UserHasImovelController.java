@@ -3,7 +3,8 @@ package com.lorenzo.api_imoveis.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,18 +32,26 @@ public class UserHasImovelController {
     }
 
     @ResponseBody
+    @RequestMapping("/list/{id}")
+    public ResponseEntity<List<UserHasImovel>> getImovel(@PathVariable Long id){
+        return services.getProposeByUser(id);
+    }
+
+    @ResponseBody
     @Transactional
     @RequestMapping(path= "/register", method = RequestMethod.POST)
-    public UserHasImovel registerUserHasImovel(@RequestBody UserHasImovelDTO dto){
+    public ResponseEntity<UserHasImovel> registerUserHasImovel(@RequestBody UserHasImovelDTO dto){
+        
         return services.registerUserHasImovel(dto.getUserId(), dto.getImovelId());
     }
 
     @ResponseBody
     @Transactional
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
-    public void deleteUserHasImovel(@PathVariable Long id){
-        services.deleteUserHasImovel(id);
-    }
+    @DeleteMapping("/delete/{userId}/{imovelId}")
+    public ResponseEntity<?> deleteUserHasImovel(@PathVariable Long userId, @PathVariable Long imovelId) {
+        services.deleteUserHasImovel(userId, imovelId);
+    return ResponseEntity.ok().build();
+}
 }
 
     

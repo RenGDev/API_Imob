@@ -4,7 +4,6 @@ import com.lorenzo.api_imoveis.entity.Photos;
 import com.lorenzo.api_imoveis.services.PhotosService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -30,9 +29,10 @@ public class PhotosController {
     public Photos uploadPhoto(
             @PathVariable Long imovelId,
             @RequestParam("file") MultipartFile file,
-            @RequestParam(value = "description", required = false) String description
+            @RequestParam(value = "description", required = false) String description,
+            @RequestParam(value = "isPrimary", required = false) Boolean isPrimary
     ) throws IOException {
-        return services.uploadPhoto(imovelId, file, description);
+        return services.uploadPhoto(imovelId, file, description, isPrimary);
     }
 
     @ResponseBody

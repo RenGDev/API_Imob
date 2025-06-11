@@ -20,14 +20,20 @@ public class ImoveisController {
     private ImoveisService services;
 
     @ResponseBody
-    @RequestMapping("/list")
+    @RequestMapping("/list/user")
     public List<ImovelWithUsuariosDTO> listarImoveisComUsuarios() {
         return services.getImoveisComUsuarios();
     }
 
     @ResponseBody
+    @RequestMapping("/list")
+    public List<Imoveis> listImoveis() {
+        return services.listImoveis();
+    }
+
+    @ResponseBody
     @RequestMapping("/list/{id}")
-    public Optional<Imoveis> getImovel(@PathVariable Long id){
+    public ResponseEntity<Optional<Imoveis>> getImovel(@PathVariable Long id){
         return services.getImovelById(id);
     }
 

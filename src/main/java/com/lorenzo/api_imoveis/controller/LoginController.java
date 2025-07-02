@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lorenzo.api_imoveis.DTOs.LoginRequestDTO;
 import com.lorenzo.api_imoveis.DTOs.LoginResponseDTO;
+import com.lorenzo.api_imoveis.entity.Users;
 import com.lorenzo.api_imoveis.exceptions.InvalidCredentialsException;
 import com.lorenzo.api_imoveis.security.JwtUtil;
+import com.lorenzo.api_imoveis.security.UserDetailsImpl;
 import com.lorenzo.api_imoveis.services.LoginService;
 
 
@@ -43,9 +45,16 @@ public class LoginController {
                 )
             );
             
-            String token = jwtUtil.generateToken(request.getEmail());
+            UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+
+            Users usuario = userDetails.getUsuario();
+
+            String token = jwtUtil.generateToken(
+                usuario.getEmail(),
+                usuario.getRole().name()
+            );
+
             return service.login(request, token);
-            
-        
+                   
     }
 }

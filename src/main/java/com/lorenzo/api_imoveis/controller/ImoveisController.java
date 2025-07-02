@@ -6,6 +6,7 @@ import com.lorenzo.api_imoveis.services.ImoveisService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,9 +51,11 @@ public class ImoveisController {
 
     @Transactional
     @PostMapping(path= "/register")
-    public Imoveis register(@RequestBody Imoveis imovel){
-        return services.registerImovel(imovel);
-    }
+    public ResponseEntity<Imoveis> register(@RequestBody Imoveis imovel) {
+
+    Imoveis novoImovel = services.registerImovel(imovel);
+    return ResponseEntity.ok(novoImovel);
+}
 
     @ResponseBody
     @Transactional

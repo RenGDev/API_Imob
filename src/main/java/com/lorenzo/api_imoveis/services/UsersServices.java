@@ -5,6 +5,7 @@ import com.lorenzo.api_imoveis.DTOs.UserWithImoveisDTO;
 import com.lorenzo.api_imoveis.entity.Imoveis;
 import com.lorenzo.api_imoveis.entity.UserHasImovel;
 import com.lorenzo.api_imoveis.entity.Users;
+import com.lorenzo.api_imoveis.entity.enums.Role;
 import com.lorenzo.api_imoveis.repository.UserHasImovelRepository;
 import com.lorenzo.api_imoveis.repository.UsersRepository;
 import com.lorenzo.api_imoveis.utils.EmailService;
@@ -72,6 +73,10 @@ public class UsersServices {
     
     public ResponseEntity<?> registerUser(Users user) {
         // A senha já deve vir hasheada do controller
+        if (user.getRole() == null) {
+            user.setRole(Role.USER); // padrão
+        }
+        
         Users response = repository.save(user);
         return ResponseEntity.ok(response);
     }

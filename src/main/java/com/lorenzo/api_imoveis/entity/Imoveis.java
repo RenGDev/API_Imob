@@ -52,4 +52,9 @@ public class Imoveis {
 
     @OneToMany(mappedBy = "imoveis", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<UserHasImovel> userhasimovel;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnoreProperties("myImoveis")
+    private Users user;
 }

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("photos")
+@CrossOrigin(origins = "*", methods = {RequestMethod.POST, RequestMethod.OPTIONS})
 public class PhotosController {
 
     @Autowired
@@ -23,15 +24,20 @@ public class PhotosController {
         return services.getPhotosFromLibrary();
     }
 
-    @ResponseBody
+    @PostMapping("/upload/{imovelId}")
     @Transactional
-    @RequestMapping(path= "/upload/{imovelId}", method = RequestMethod.POST)
     public Photos uploadPhoto(
             @PathVariable Long imovelId,
             @RequestParam("file") MultipartFile file,
             @RequestParam(value = "description", required = false) String description,
-            @RequestParam(value = "isPrimary", required = false) Boolean isPrimary
+            @RequestParam(value = "isPrimary", required = false, defaultValue = "false") Boolean isPrimary,
+            @RequestHeader("Authorization") String authorizationHeader
     ) throws IOException {
+        
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+            throw new SecurityException("Token de autorização inválido");
+        }
+        
         return services.uploadPhoto(imovelId, file, description, isPrimary);
     }
 
